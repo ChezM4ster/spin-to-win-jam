@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://c6d1fqlmc62bi"]
 
-[ext_resource type="Script" uid="uid://mxa84rsd2fvo" path="res://Scenes/Player_Controller.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://mxa84rsd2fvo" path="res://Scripting/Player_Controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cno5tmsr6lydx" path="res://Art Assets/megaman.png" id="1_v0iea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0ya7"]
+radius = 11.0
+height = 24.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1053912103]
+[node name="Player" type="CharacterBody2D" unique_id=1053912103 node_paths=PackedStringArray("playerSprite") groups=["Player"]]
 script = ExtResource("1_cvnsp")
+playerSprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1705770617]
 shape = SubResource("CapsuleShape2D_u0ya7")

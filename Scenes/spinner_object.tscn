@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://br3yw484vxwx6"]
+
+[ext_resource type="Script" uid="uid://b1k72erh7vjxm" path="res://Scripting/spinner_object.gd" id="1_0hy20"]
+[ext_resource type="Texture2D" uid="uid://yvraxd70tfwh" path="res://Art Assets/Square.png" id="1_hhb8x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0ya7"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
+size = Vector2(182, 20)
+
+[node name="Spinner Object" type="Node2D" unique_id=1604758708 node_paths=PackedStringArray("spinnerRigidBody")]
+script = ExtResource("1_0hy20")
+spinnerRigidBody = NodePath("RigidBody2D")
+
+[node name="SpinOriginPoint" type="StaticBody2D" parent="." unique_id=928818083]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpinOriginPoint" unique_id=549229157]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(-3.8146973e-06, 3.8146973e-06)
+scale = Vector2(0.031999983, 0.031999983)
+texture = ExtResource("1_hhb8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinOriginPoint" unique_id=420513068]
+shape = SubResource("CircleShape2D_u0ya7")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1987402568]
+freeze_mode = 1
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1416244793]
+position = Vector2(81, 0)
+shape = SubResource("RectangleShape2D_u0ya7")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D" unique_id=2117537919]
+position = Vector2(1.5258789e-05, -2.3841858e-07)
+scale = Vector2(0.728, 0.08)
+texture = ExtResource("1_hhb8x")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1270054529]
+node_a = NodePath("../SpinOriginPoint")
+node_b = NodePath("../RigidBody2D")
+bias = 0.9
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
