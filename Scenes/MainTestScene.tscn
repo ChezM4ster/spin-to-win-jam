@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6d1fqlmc62bi" path="res://Scenes/player.tscn" id="2_t4ek1"]
 [ext_resource type="PackedScene" uid="uid://br3yw484vxwx6" path="res://Scenes/spinner_object.tscn" id="3_l4f2i"]
 [ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://Scenes/free_spinner_object.tscn" id="4_ghobd"]
+[ext_resource type="Script" uid="uid://c8iu4vu2wabc7" path="res://Scenes/Level_Spinner.gd" id="4_sbs00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 
@@ -13,7 +14,7 @@
 position = Vector2(559, 327)
 
 [node name="Spinner Object" parent="." unique_id=1604758708 instance=ExtResource("3_l4f2i")]
-position = Vector2(643, 306)
+position = Vector2(576, 209)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=458941284]
 position = Vector2(579, 216)
@@ -23,9 +24,11 @@ zoom = Vector2(1.495, 1.495)
 position = Vector2(472, 224)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1720006584]
+position = Vector2(574, 212)
+script = ExtResource("4_sbs00")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Node2D" unique_id=1306332313 groups=["Player", "Spin_Objects", "Terrain"]]
-position = Vector2(577, -2)
+position = Vector2(5, -199)
 scale = Vector2(57.760006, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2" unique_id=907451614]
@@ -37,7 +40,7 @@ scale = Vector2(0.080055386, 0.07999996)
 texture = ExtResource("1_mslwm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D" unique_id=2061676559 groups=["Player", "Spin_Objects", "Terrain"]]
-position = Vector2(577, 403)
+position = Vector2(5, 206)
 scale = Vector2(57.760006, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D" unique_id=829143506]
@@ -49,7 +52,7 @@ scale = Vector2(0.080055386, 0.07999996)
 texture = ExtResource("1_mslwm")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Node2D" unique_id=1854051845 groups=["Player", "Spin_Objects", "Terrain"]]
-position = Vector2(193, 198.00003)
+position = Vector2(-379, 1.0000305)
 rotation = 1.5707964
 scale = Vector2(57.760006, 1)
 
@@ -62,7 +65,7 @@ scale = Vector2(0.080055386, 0.07999996)
 texture = ExtResource("1_mslwm")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Node2D" unique_id=1757042843 groups=["Player", "Spin_Objects", "Terrain"]]
-position = Vector2(967, 198.00002)
+position = Vector2(395, 1.0000153)
 rotation = 1.5707964
 scale = Vector2(57.760006, 1)
 
