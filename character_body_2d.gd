@@ -1,25 +1,52 @@
 extends CharacterBody2D
 
+const SPEED = 200.0
+const JUMP_VELOCITY = -300.0
+@export var coyote_t: float = 0.1
+@export var jump_buffer_t: float = 0.05
+var jump_pressed = false
+var jump_buffer_timer = Timer
+var was_on_floor = false
+var can_coyote_jump = false
+@onready var corporate_guy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+func _ready() -> void:
+	jump_buffer_timer = Timer.new()
+	jump_buffer_timer.one_shot = true
+	jump_buffer_timer.timeout.connect(func(): jump_pressed = false)
+	add_child(jump_buffer_timer)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if was_on_floor and velocity.y >= 0 :
+			can_coyote_jump = true
+			get_tree().create_timer(coyote_t).timeout.connect(func(): can_coyote_jump = false)
+		else:
+			if jump_pressed:
+				velocity.y = JUMP_VELOCITY
+				jump_pressed=false
+				jump_buffer_timer.stop()
+	
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or can_coyote_jump:
+			velocity.y = JUMP_VELOCITY
+			can_coyote_jump = false
+		else:
+			jump_pressed = true
+			jump_buffer_timer.start(jump_buffer_t)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	var direction := Input.get_axis("m_left", "m_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	if direction < 0 :
+		corporate_guy_sprite.flip_h = true
+	if direction > 0 :
+		corporate_guy_sprite.flip_h = false
 
 	move_and_slide()

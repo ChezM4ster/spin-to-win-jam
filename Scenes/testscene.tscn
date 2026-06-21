@@ -35,7 +35,7 @@ position = Vector2(193, 185)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1025395165]
 position = Vector2(194, 207)
-zoom = Vector2(3, 4)
+zoom = Vector2(4, 4)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1556200534]
 position = Vector2(193, 185)
