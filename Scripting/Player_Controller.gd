@@ -71,6 +71,7 @@ func _physics_process(delta: float) -> void:
 			currentProjectile = newProjectile
 			newProjectile.position = projectileSpawnArea.transform.get_origin()
 			newProjectile.spinnerHit.connect(_on_spinner_hit)
+			if(corporate_guy_sprite.flip_h == true): newProjectile.speed *= -1
 			return
 		elif(currentSpinner != null):
 			currentSpinner.canSpin = false
