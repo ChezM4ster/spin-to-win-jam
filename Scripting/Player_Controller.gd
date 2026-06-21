@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			jump_pressed = true
 			jump_buffer_timer.start(jump_buffer_t)
+	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY/4
 
 	
 	var direction := Input.get_axis("Move_Left", "Move_Right")

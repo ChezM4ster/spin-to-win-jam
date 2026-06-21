@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8kkqbpxllgmd"]
 
-[ext_resource type="Script" uid="uid://cvvamq2svc4pm" path="res://Scripting/character_body_2d.gd" id="1_dgipi"]
+[ext_resource type="Script" uid="uid://botss2m176ij5" path="res://Scripting/Player_Controller.gd" id="1_dgipi"]
 [ext_resource type="Texture2D" uid="uid://ri5n82lthj6h" path="res://Art Assets/lilcorporateguy.png" id="2_45lhf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t74ru"]
