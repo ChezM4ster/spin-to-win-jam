@@ -23,12 +23,14 @@ func _physics_process(delta: float) -> void:
 		if was_on_floor and velocity.y >= 0 :
 			can_coyote_jump = true
 			get_tree().create_timer(coyote_t).timeout.connect(func(): can_coyote_jump = false)
-		else:
-			if jump_pressed:
-				velocity.y = JUMP_VELOCITY
-				jump_pressed=false
-				jump_buffer_timer.stop()
+	else:
+		if jump_pressed:
+			velocity.y = JUMP_VELOCITY
+			jump_pressed=false
+			jump_buffer_timer.stop()
 	
+	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY/40
 	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor() or can_coyote_jump:
 			velocity.y = JUMP_VELOCITY
@@ -36,8 +38,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			jump_pressed = true
 			jump_buffer_timer.start(jump_buffer_t)
-	if Input.is_action_just_released("Jump") and velocity.y < 0:
-		velocity.y = JUMP_VELOCITY/4
+	
 
 	
 	var direction := Input.get_axis("Move_Left", "Move_Right")
@@ -50,5 +51,6 @@ func _physics_process(delta: float) -> void:
 		corporate_guy_sprite.flip_h = true
 	if direction > 0 :
 		corporate_guy_sprite.flip_h = false
-
+	
+	was_on_floor = is_on_floor()
 	move_and_slide()
