@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://c6d1fqlmc62bi" path="res://Scenes/player.tscn" id="2_t4ek1"]
 [ext_resource type="PackedScene" uid="uid://br3yw484vxwx6" path="res://Scenes/spinner_object.tscn" id="3_l4f2i"]
 [ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://Scenes/free_spinner_object.tscn" id="4_ghobd"]
-[ext_resource type="Script" uid="uid://b1k72erh7vjxm" path="res://Scripting/spinner_object.gd" id="4_sbs00"]
+[ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="4_sbs00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 
-[node name="Node2D" type="Node2D" unique_id=348314919]
+[node name="Node2D2" type="Node2D" unique_id=348314919]
 
 [node name="Player" parent="." unique_id=1053912103 instance=ExtResource("2_t4ek1")]
 position = Vector2(559, 327)

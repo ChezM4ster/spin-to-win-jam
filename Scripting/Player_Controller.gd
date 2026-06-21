@@ -10,6 +10,14 @@ var was_on_floor = false
 var can_coyote_jump = false
 @onready var corporate_guy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+#Shooting variables
+@export var currentSpinner: SpinnerObject
+@export var isSpinning: bool = false
+@export var projectileSpawnArea: Node2D
+@export var projectile: PackedScene
+@export var currentProjectile: SpinnerProjectile
+
+
 func _ready() -> void:
 	jump_buffer_timer = Timer.new()
 	jump_buffer_timer.one_shot = true
@@ -48,7 +56,32 @@ func _physics_process(delta: float) -> void:
 	
 	if direction < 0 :
 		corporate_guy_sprite.flip_h = true
+		projectileSpawnArea.position.x = -7.0
 	if direction > 0 :
 		corporate_guy_sprite.flip_h = false
+		projectileSpawnArea.position.x = 7.0
 
 	move_and_slide()
+	
+		##anyspin section
+	if(Input.is_action_just_pressed("Interact")):
+		if(!isSpinning && currentProjectile == null):
+			var newProjectile := projectile.instantiate() as SpinnerProjectile
+			add_child(newProjectile)
+			currentProjectile = newProjectile
+			newProjectile.position = projectileSpawnArea.transform.get_origin()
+			newProjectile.spinnerHit.connect(_on_spinner_hit)
+			return
+		elif(currentSpinner != null):
+			currentSpinner.canSpin = false
+			currentSpinner = null
+			isSpinning = false
+
+
+#region signal catcher
+func _on_spinner_hit(newSpinner: SpinnerObject) -> void:
+	currentSpinner = newSpinner
+	newSpinner.canSpin = true
+	isSpinning = true
+	pass
+#endregion

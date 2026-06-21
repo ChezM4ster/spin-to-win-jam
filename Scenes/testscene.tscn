@@ -1,44 +1,100 @@
 [gd_scene format=3 uid="uid://dibsw71pkro4d"]
 
 [ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="1_l2n4a"]
-[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="2_ye8wr"]
-[ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://scenes/screw.tscn" id="3_ckmbu"]
-[ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="4_p7smk"]
+[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://Scenes/lilguy.tscn" id="2_ye8wr"]
+[ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://Scenes/screw.tscn" id="3_ckmbu"]
+[ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
+[ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://Scenes/spinningthing.tscn" id="4_p7smk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(392, 16)
 
 [node name="Node2D" type="Node2D" unique_id=1380629943]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=539060200]
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=106834634]
-position = Vector2(200.24997, 279.81247)
-scale = Vector2(12.234375, 2.1484404)
-texture = ExtResource("1_l2n4a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1603004922]
-position = Vector2(200, 279)
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="CharacterBody2D" parent="." unique_id=2112382433 instance=ExtResource("2_ye8wr")]
+[node name="Player" parent="." unique_id=2112382433 instance=ExtResource("2_ye8wr")]
 position = Vector2(111, 242)
 collision_mask = 3
-
-[node name="RigidBody2D" parent="." unique_id=634038324 instance=ExtResource("4_p7smk")]
-position = Vector2(231, 185)
-collision_layer = 2
-collision_mask = 2
-
-[node name="StaticBody2D2" parent="." unique_id=1696513393 instance=ExtResource("3_ckmbu")]
-position = Vector2(193, 185)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1025395165]
 position = Vector2(194, 207)
 zoom = Vector2(4, 4)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1556200534]
-position = Vector2(193, 185)
-node_a = NodePath("../StaticBody2D2")
-node_b = NodePath("../RigidBody2D")
+position = Vector2(193, 195)
+rotation = 1.5707964
+node_a = NodePath("StaticBody2D2")
+node_b = NodePath("Spinner")
 bias = 0.9
+
+[node name="Spinner" parent="PinJoint2D" unique_id=634038324 instance=ExtResource("4_p7smk")]
+position = Vector2(38, 0)
+collision_layer = 2
+collision_mask = 2
+canSpin = false
+
+[node name="StaticBody2D2" parent="PinJoint2D" unique_id=1696513393 instance=ExtResource("3_ckmbu")]
+rotation = -1.5707964
+
+[node name="Terrain" type="Node2D" parent="." unique_id=1762658383 node_paths=PackedStringArray("staticSpinner") groups=["Spin_Objects", "Terrain"]]
+position = Vector2(195, 207)
+script = ExtResource("4_ggkdx")
+rotationSpeed = 3.0
+staticSpinner = NodePath(".")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain" unique_id=539060200 groups=["Spin_Objects", "Terrain"]]
+position = Vector2(-200, -198)
+collision_layer = 2
+collision_mask = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/StaticBody2D" unique_id=106834634]
+position = Vector2(200.24997, 279.81247)
+scale = Vector2(12.234375, 2.1484404)
+texture = ExtResource("1_l2n4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D" unique_id=1603004922 groups=["Terrain"]]
+position = Vector2(200, 279)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Terrain" unique_id=1138094031 groups=["Spin_Objects", "Terrain"]]
+position = Vector2(-202, -362)
+collision_layer = 2
+collision_mask = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/StaticBody2D2" unique_id=2059853152]
+position = Vector2(200.24997, 279.81247)
+scale = Vector2(12.234375, 2.1484404)
+texture = ExtResource("1_l2n4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D2" unique_id=2072952478 groups=["Terrain"]]
+position = Vector2(200, 279)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Terrain" unique_id=328362449 groups=["Spin_Objects", "Terrain"]]
+position = Vector2(130, -198)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/StaticBody2D3" unique_id=349407160]
+position = Vector2(200.24997, 279.81247)
+scale = Vector2(12.234375, 2.1484404)
+texture = ExtResource("1_l2n4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D3" unique_id=1471523485 groups=["Terrain"]]
+position = Vector2(200, 279)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Terrain" unique_id=1575175446 groups=["Spin_Objects", "Terrain"]]
+position = Vector2(426, -196)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/StaticBody2D4" unique_id=1750995316]
+position = Vector2(200.24997, 279.81247)
+scale = Vector2(12.234375, 2.1484404)
+texture = ExtResource("1_l2n4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D4" unique_id=747228769 groups=["Terrain"]]
+position = Vector2(200, 279)
+shape = SubResource("RectangleShape2D_g4v7s")
