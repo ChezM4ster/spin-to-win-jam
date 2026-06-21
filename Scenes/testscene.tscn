@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dibsw71pkro4d"]
 
-[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://assets/protbox.png" id="1_l2n4a"]
+[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="1_l2n4a"]
 [ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="2_ye8wr"]
 [ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://scenes/screw.tscn" id="3_ckmbu"]
 [ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="4_p7smk"]
