@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 				jump_pressed=false
 				jump_buffer_timer.stop()
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor() or can_coyote_jump:
 			velocity.y = JUMP_VELOCITY
 			can_coyote_jump = false
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 			jump_buffer_timer.start(jump_buffer_t)
 
 	
-	var direction := Input.get_axis("m_left", "m_right")
+	var direction := Input.get_axis("Move_Left", "Move_Right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
