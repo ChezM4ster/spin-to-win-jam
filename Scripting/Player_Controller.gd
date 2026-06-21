@@ -3,7 +3,12 @@ extends CharacterBody2D
 @export var jumpSpeed = 300
 @export var gravity = 500
 @export var playerSprite: Sprite2D
-var  isGrounded = false
+
+@export var isSpinning: bool = false
+@export var currentSpinner: Node2D
+@export var projectileSpawnArea: Node2D
+@export var projectile: PackedScene
+@export var currentProjectile: SpinnerProjectile
 
 func get_input():
 	var input_velocity = velocity
@@ -18,8 +23,19 @@ func get_input():
 	
 		#input_velocity.x = velocity.x 
 	
-	
 	velocity = input_velocity
+	
+	##anyspin section
+	if(Input.is_action_just_pressed("Interact")):
+		if(!isSpinning && currentProjectile == null):
+			var newProjectile := projectile.instantiate() as SpinnerProjectile
+			add_child(newProjectile)
+			currentProjectile = newProjectile
+			newProjectile.position = projectileSpawnArea.transform.get_origin()
+			return
+		else:
+			
+			currentSpinner = null
 
 
 func _physics_process(delta: float) -> void:

@@ -78,6 +78,13 @@ Spin_CW={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Spin Objects"
+2d_physics/layer_4="Spin Projectile"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

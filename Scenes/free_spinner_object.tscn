@@ -6,18 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 size = Vector2(36.5, 20)
 
-[node name="Free Spinner Object" type="Node2D" unique_id=1604758708 node_paths=PackedStringArray("spinnerRigidBody")]
+[node name="Free Spinner Object" type="Node2D" unique_id=1604758708 node_paths=PackedStringArray("spinnerRigidBody") groups=["Spin_Objects"]]
 script = ExtResource("1_ld5pt")
 spinnerRigidBody = NodePath("RigidBody2D")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1987402568]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1987402568 groups=["Spin_Objects"]]
+collision_layer = 4
+collision_mask = 15
 continuous_cd = 2
+contact_monitor = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1416244793]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1416244793 groups=["Spin_Objects"]]
 position = Vector2(8.75, 0)
 shape = SubResource("RectangleShape2D_u0ya7")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D" unique_id=2117537919]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D" unique_id=2117537919 groups=["Spin_Objects"]]
 modulate = Color(0, 1, 1, 1)
 scale = Vector2(0.1458295, 0.07999879)
 texture = ExtResource("2_vktrk")
