@@ -2,19 +2,26 @@
 
 [ext_resource type="Script" uid="uid://mxa84rsd2fvo" path="res://Scripting/Player_Controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cno5tmsr6lydx" path="res://Art Assets/megaman.png" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://te3meu81bjha" path="res://Scenes/spinner_detecting_projectile.tscn" id="2_6t5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0ya7"]
 radius = 11.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1053912103 node_paths=PackedStringArray("playerSprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1053912103 node_paths=PackedStringArray("playerSprite", "projectileSpawnArea") groups=["Player"]]
+collision_mask = 6
 script = ExtResource("1_cvnsp")
 playerSprite = NodePath("Sprite2D")
+projectileSpawnArea = NodePath("Spinner projectile spawn area")
+projectile = ExtResource("2_6t5aa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1705770617]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1705770617 groups=["Player"]]
 shape = SubResource("CapsuleShape2D_u0ya7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72948586]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72948586 groups=["Player"]]
 position = Vector2(2, -6.0000005)
 scale = Vector2(0.09374999, 0.09374999)
 texture = ExtResource("1_v0iea")
+
+[node name="Spinner projectile spawn area" type="Node2D" parent="." unique_id=850164714 groups=["Player"]]
+position = Vector2(17, 0)

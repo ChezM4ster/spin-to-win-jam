@@ -9,25 +9,28 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 size = Vector2(182, 20)
 
-[node name="Spinner Object" type="Node2D" unique_id=1604758708 node_paths=PackedStringArray("spinnerRigidBody")]
+[node name="Spinner Object" type="Node2D" unique_id=1604758708 node_paths=PackedStringArray("spinnerRigidBody") groups=["Spin_Objects"]]
 script = ExtResource("1_0hy20")
 spinnerRigidBody = NodePath("RigidBody2D")
 
-[node name="SpinOriginPoint" type="StaticBody2D" parent="." unique_id=928818083]
+[node name="SpinOriginPoint" type="StaticBody2D" parent="." unique_id=928818083 groups=["Spin_Objects"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="SpinOriginPoint" unique_id=549229157]
+[node name="Sprite2D" type="Sprite2D" parent="SpinOriginPoint" unique_id=549229157 groups=["Spin_Objects"]]
 modulate = Color(1, 0, 0, 1)
 z_index = 1
 position = Vector2(-3.8146973e-06, 3.8146973e-06)
 scale = Vector2(0.031999983, 0.031999983)
 texture = ExtResource("1_hhb8x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinOriginPoint" unique_id=420513068]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinOriginPoint" unique_id=420513068 groups=["Spin_Objects"]]
 shape = SubResource("CircleShape2D_u0ya7")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1987402568]
-freeze_mode = 1
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1987402568 groups=["Spin_Objects"]]
+collision_layer = 4
+collision_mask = 15
+gravity_scale = 0.0
 continuous_cd = 2
+contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1416244793]
 position = Vector2(81, 0)
@@ -38,7 +41,7 @@ position = Vector2(1.5258789e-05, -2.3841858e-07)
 scale = Vector2(0.728, 0.08)
 texture = ExtResource("1_hhb8x")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1270054529]
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1270054529 groups=["Spin_Objects"]]
 node_a = NodePath("../SpinOriginPoint")
 node_b = NodePath("../RigidBody2D")
 bias = 0.9
