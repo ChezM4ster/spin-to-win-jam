@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cnls71ive2g2j"]
+
+[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://assets/protbox.png" id="1_g8nqk"]
+[ext_resource type="Script" uid="uid://c8qij780wpeo" path="res://scripts/spinningthing.gd" id="1_uv864"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(84, 8)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=634038324 node_paths=PackedStringArray("rigid_body_2d")]
+script = ExtResource("1_uv864")
+rigid_body_2d = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=868019564]
+scale = Vector2(2.625, 1)
+texture = ExtResource("1_g8nqk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1522515079]
+shape = SubResource("RectangleShape2D_g4v7s")

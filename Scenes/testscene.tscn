@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dibsw71pkro4d"]
+
+[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://assets/protbox.png" id="1_l2n4a"]
+[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="2_ye8wr"]
+[ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://scenes/screw.tscn" id="3_ckmbu"]
+[ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="4_p7smk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(392, 16)
+
+[node name="Node2D" type="Node2D" unique_id=1380629943]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=539060200]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=106834634]
+position = Vector2(200.24997, 279.81247)
+scale = Vector2(12.234375, 2.1484404)
+texture = ExtResource("1_l2n4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1603004922]
+position = Vector2(200, 279)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CharacterBody2D" parent="." unique_id=2112382433 instance=ExtResource("2_ye8wr")]
+position = Vector2(111, 242)
+collision_mask = 3
+
+[node name="RigidBody2D" parent="." unique_id=634038324 instance=ExtResource("4_p7smk")]
+position = Vector2(231, 185)
+collision_layer = 2
+collision_mask = 2
+
+[node name="StaticBody2D2" parent="." unique_id=1696513393 instance=ExtResource("3_ckmbu")]
+position = Vector2(193, 185)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1025395165]
+position = Vector2(194, 207)
+zoom = Vector2(4, 4)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1556200534]
+position = Vector2(193, 185)
+node_a = NodePath("../StaticBody2D2")
+node_b = NodePath("../RigidBody2D")
+bias = 0.9
