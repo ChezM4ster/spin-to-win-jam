@@ -1,54 +1,54 @@
 extends CharacterBody2D
-@export var walkSpeed = 200
-@export var jumpSpeed = 300
-@export var gravity = 500
-@export var playerSprite: Sprite2D
 
-@export var isSpinning: bool = false
-@export var currentSpinner: SpinnerObject
-@export var projectileSpawnArea: Node2D
-@export var projectile: PackedScene
-@export var currentProjectile: SpinnerProjectile
+const SPEED = 200.0
+const JUMP_VELOCITY = -300.0
+@export var coyote_t: float = 0.1
+@export var jump_buffer_t: float = 0.05
+var jump_pressed = false
+var jump_buffer_timer = Timer
+var was_on_floor = false
+var can_coyote_jump = false
+@onready var corporate_guy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-func get_input():
-	var input_velocity = velocity
-	if(is_on_floor()):
-		input_velocity = Vector2(Input.get_axis("Move_Left","Move_Right") * walkSpeed, velocity.y)
-	if (Input.is_action_just_pressed("Jump") && is_on_floor()):
-		input_velocity += Vector2(0, -jumpSpeed)
-	elif (Input.is_action_just_released("Jump") && velocity.y < 0):
-		input_velocity.y = 0
-	
-		#input_velocity.x = velocity.x 
-	
-	velocity = input_velocity
-	
-	##anyspin section
-	if(Input.is_action_just_pressed("Interact")):
-		if(!isSpinning && currentProjectile == null):
-			var newProjectile := projectile.instantiate() as SpinnerProjectile
-			add_child(newProjectile)
-			currentProjectile = newProjectile
-			newProjectile.position = projectileSpawnArea.transform.get_origin()
-			newProjectile.spinnerHit.connect(_on_spinner_hit)
-			return
-		else:
-			currentSpinner.canSpin = false
-			currentSpinner = null
-			isSpinning = false
-
+func _ready() -> void:
+	jump_buffer_timer = Timer.new()
+	jump_buffer_timer.one_shot = true
+	jump_buffer_timer.timeout.connect(func(): jump_pressed = false)
+	add_child(jump_buffer_timer)
 
 func _physics_process(delta: float) -> void:
-	get_input()
-	if velocity.y > 500:
-		velocity.y = 500
-	velocity.y += gravity * delta
-	move_and_slide()
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		if was_on_floor and velocity.y >= 0 :
+			can_coyote_jump = true
+			get_tree().create_timer(coyote_t).timeout.connect(func(): can_coyote_jump = false)
+		else:
+			if jump_pressed:
+				velocity.y = JUMP_VELOCITY
+				jump_pressed=false
+				jump_buffer_timer.stop()
 	
-#region signal catcher
-func _on_spinner_hit(newSpinner: SpinnerObject) -> void:
-	currentSpinner = newSpinner
-	newSpinner.canSpin = true
-	isSpinning = true
-	pass
-#endregion
+	if Input.is_action_just_pressed("Jump"):
+		if is_on_floor() or can_coyote_jump:
+			velocity.y = JUMP_VELOCITY
+			can_coyote_jump = false
+		else:
+			jump_pressed = true
+			jump_buffer_timer.start(jump_buffer_t)
+	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY/4
+
+	
+	var direction := Input.get_axis("Move_Left", "Move_Right")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	if direction < 0 :
+		corporate_guy_sprite.flip_h = true
+	if direction > 0 :
+		corporate_guy_sprite.flip_h = false
+
+	move_and_slide()
