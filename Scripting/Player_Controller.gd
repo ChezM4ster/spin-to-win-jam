@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var playerSprite: Sprite2D
 
 @export var isSpinning: bool = false
-@export var currentSpinner: Node2D
+@export var currentSpinner: SpinnerObject
 @export var projectileSpawnArea: Node2D
 @export var projectile: PackedScene
 @export var currentProjectile: SpinnerProjectile
@@ -14,8 +14,6 @@ func get_input():
 	var input_velocity = velocity
 	if(is_on_floor()):
 		input_velocity = Vector2(Input.get_axis("Move_Left","Move_Right") * walkSpeed, velocity.y)
-		
-## poop
 	if (Input.is_action_just_pressed("Jump") && is_on_floor()):
 		input_velocity += Vector2(0, -jumpSpeed)
 	elif (Input.is_action_just_released("Jump") && velocity.y < 0):
@@ -32,10 +30,12 @@ func get_input():
 			add_child(newProjectile)
 			currentProjectile = newProjectile
 			newProjectile.position = projectileSpawnArea.transform.get_origin()
+			newProjectile.spinnerHit.connect(_on_spinner_hit)
 			return
 		else:
-			
+			currentSpinner.canSpin = false
 			currentSpinner = null
+			isSpinning = false
 
 
 func _physics_process(delta: float) -> void:
@@ -44,3 +44,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 500
 	velocity.y += gravity * delta
 	move_and_slide()
+	
+#region signal catcher
+func _on_spinner_hit(newSpinner: SpinnerObject) -> void:
+	currentSpinner = newSpinner
+	newSpinner.canSpin = true
+	isSpinning = true
+	pass
+#endregion
