@@ -15,7 +15,7 @@ func get_input():
 	if(is_on_floor()):
 		input_velocity = Vector2(Input.get_axis("Move_Left","Move_Right") * walkSpeed, velocity.y)
 		
-
+## poop
 	if (Input.is_action_just_pressed("Jump") && is_on_floor()):
 		input_velocity += Vector2(0, -jumpSpeed)
 	elif (Input.is_action_just_released("Jump") && velocity.y < 0):
