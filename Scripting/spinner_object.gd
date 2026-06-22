@@ -6,7 +6,11 @@ class_name  SpinnerObject
 
 @export var staticSpinner: Node2D
 @export var canSpin: bool = false
+@export var spinCoreSprite: AnimatedSprite2D
 
+func _ready() -> void:
+	if(spinCoreSprite == null):
+		print_debug("You're missing a spin core sprite")
 
 func _physics_process(delta: float) -> void:
 	
@@ -20,6 +24,13 @@ func _physics_process(delta: float) -> void:
 			rotate(Input.get_axis("Spin_CounterCW","Spin_CW") * rotationSpeed * delta)
 			##USE SMALLER NUMBERS FOR ROTATING STATIC OBJECTS
 	return
+
+func setSpin (canISpinNowPLease: bool):
+	if(canISpinNowPLease):
+		spinCoreSprite.play()
+	else: spinCoreSprite.stop()
+	canSpin = canISpinNowPLease
+	pass
 
 
 func _on_rigid_body_2d_body_entered(_body: Node) -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://botss2m176ij5" path="res://Scripting/Player_Controller.gd" id="1_dgipi"]
 [ext_resource type="Texture2D" uid="uid://ri5n82lthj6h" path="res://Art Assets/lilcorporateguy.png" id="2_45lhf"]
 [ext_resource type="PackedScene" uid="uid://te3meu81bjha" path="res://Scenes/spinner_detecting_projectile.tscn" id="2_ghwb3"]
+[ext_resource type="Texture2D" uid="uid://b08q333dbsibg" path="res://Art Assets/laserbeam.png" id="4_bkbyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t74ru"]
 atlas = ExtResource("2_45lhf")
@@ -69,3 +70,12 @@ shape = SubResource("CapsuleShape2D_yf5fn")
 
 [node name="Spinner projectile spawn area" type="Node2D" parent="." unique_id=508028261 groups=["Player"]]
 position = Vector2(7, -6)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=223389928]
+z_index = 2
+points = PackedVector2Array(7, -6, 41, -6)
+width = 4.0
+texture = ExtResource("4_bkbyj")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2

@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="1_l2n4a"]
 [ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://Scenes/lilguy.tscn" id="2_ye8wr"]
 [ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://Scenes/screw.tscn" id="3_ckmbu"]
+[ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://Scenes/free_spinner_object.tscn" id="4_3hk28"]
 [ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
 [ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://Scenes/spinningthing.tscn" id="4_p7smk"]
+[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://Scenes/SpinCoreSprite.tscn" id="6_3hk28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(392, 16)
@@ -13,7 +15,7 @@ size = Vector2(392, 16)
 
 [node name="Player" parent="." unique_id=2112382433 instance=ExtResource("2_ye8wr")]
 position = Vector2(111, 242)
-collision_mask = 3
+collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1025395165]
 position = Vector2(194, 207)
@@ -35,11 +37,12 @@ canSpin = false
 [node name="StaticBody2D2" parent="PinJoint2D" unique_id=1696513393 instance=ExtResource("3_ckmbu")]
 rotation = -1.5707964
 
-[node name="Terrain" type="Node2D" parent="." unique_id=1762658383 node_paths=PackedStringArray("staticSpinner") groups=["Spin_Objects", "Terrain"]]
+[node name="Terrain" type="Node2D" parent="." unique_id=1762658383 node_paths=PackedStringArray("staticSpinner", "spinCoreSprite") groups=["Spin_Objects", "Terrain"]]
 position = Vector2(195, 207)
 script = ExtResource("4_ggkdx")
 rotationSpeed = 3.0
 staticSpinner = NodePath(".")
+spinCoreSprite = NodePath("SpinCoreSprite")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Terrain" unique_id=539060200 groups=["Spin_Objects", "Terrain"]]
 position = Vector2(-200, -198)
@@ -98,3 +101,10 @@ texture = ExtResource("1_l2n4a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D4" unique_id=747228769 groups=["Terrain"]]
 position = Vector2(200, 279)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="SpinCoreSprite" parent="Terrain" unique_id=2009524348 instance=ExtResource("6_3hk28")]
+position = Vector2(0, 81)
+
+[node name="Free Spinner Object" parent="." unique_id=1604758708 instance=ExtResource("4_3hk28")]
+position = Vector2(146, 227.00002)
+rotation = 1.5707964

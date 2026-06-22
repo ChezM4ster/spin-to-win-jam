@@ -2,11 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="1_g8nqk"]
 [ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="1_yo3lg"]
+[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://Scenes/SpinCoreSprite.tscn" id="3_8d6ch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(84, 8)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=634038324 node_paths=PackedStringArray("spinnerRigidBody") groups=["Spin_Objects"]]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=634038324 node_paths=PackedStringArray("spinnerRigidBody", "spinCoreSprite") groups=["Spin_Objects"]]
 collision_layer = 4
 collision_mask = 11
 gravity_scale = 0.0
@@ -17,6 +18,7 @@ contact_monitor = true
 script = ExtResource("1_yo3lg")
 spinnerRigidBody = NodePath(".")
 canSpin = true
+spinCoreSprite = NodePath("SpinCoreSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=868019564 groups=["Spin_Objects"]]
 scale = Vector2(2.625, 1)
@@ -24,3 +26,6 @@ texture = ExtResource("1_g8nqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1522515079 groups=["Spin_Objects"]]
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="SpinCoreSprite" parent="." unique_id=2009524348 instance=ExtResource("3_8d6ch")]
+position = Vector2(-38, 0)
