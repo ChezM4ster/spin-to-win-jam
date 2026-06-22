@@ -16,6 +16,7 @@ var can_coyote_jump = false
 @export var projectileSpawnArea: Node2D
 @export var projectile: PackedScene
 @export var currentProjectile: SpinnerProjectile
+@export var laserPointer: Line2D
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func _ready() -> void:
 	jump_buffer_timer.one_shot = true
 	jump_buffer_timer.timeout.connect(func(): jump_pressed = false)
 	add_child(jump_buffer_timer)
+	laserPointer = $Line2D
+	laserPointer.clear_points()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -73,16 +76,26 @@ func _physics_process(delta: float) -> void:
 			newProjectile.spinnerHit.connect(_on_spinner_hit)
 			if(corporate_guy_sprite.flip_h == true): newProjectile.speed *= -1
 			return
-		elif(currentSpinner != null):
-			currentSpinner.canSpin = false
-			currentSpinner = null
-			isSpinning = false
+		elif(currentSpinner != null): cancelSpinning()
+##Laser Pointer Section
+	if (currentSpinner != null):
+		laserPointer.clear_points()
+		laserPointer.add_point(projectileSpawnArea.position)
+		#while (laserPointer.get_point_position(laserPointer.get_point_count()-1).distance_to(currentSpinner.spinCoreSprite.global_position) > 16):
+		laserPointer.add_point(currentSpinner.spinCoreSprite.global_position - global_position)
 
 
+func cancelSpinning():
+	currentSpinner.setSpin(false)
+	currentSpinner = null
+	isSpinning = false
+	laserPointer.clear_points()
+
+#line.add_point(some_global_pos - line.global_position)
 #region signal catcher
 func _on_spinner_hit(newSpinner: SpinnerObject) -> void:
 	currentSpinner = newSpinner
-	newSpinner.canSpin = true
+	newSpinner.setSpin(true)
 	isSpinning = true
 	pass
 #endregion
