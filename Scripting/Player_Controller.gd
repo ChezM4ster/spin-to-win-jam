@@ -10,6 +10,14 @@ var was_on_floor = false
 var can_coyote_jump = false
 @onready var corporate_guy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+#Shooting variables
+@export var currentSpinner: SpinnerObject
+@export var isSpinning: bool = false
+@export var projectileSpawnArea: Node2D
+@export var projectile: PackedScene
+@export var currentProjectile: SpinnerProjectile
+
+
 func _ready() -> void:
 	jump_buffer_timer = Timer.new()
 	jump_buffer_timer.one_shot = true
@@ -23,14 +31,12 @@ func _physics_process(delta: float) -> void:
 		if was_on_floor and velocity.y >= 0 :
 			can_coyote_jump = true
 			get_tree().create_timer(coyote_t).timeout.connect(func(): can_coyote_jump = false)
-	else:
-		if jump_pressed:
-			velocity.y = JUMP_VELOCITY
-			jump_pressed=false
-			jump_buffer_timer.stop()
+		else:
+			if jump_pressed:
+				velocity.y = JUMP_VELOCITY
+				jump_pressed=false
+				jump_buffer_timer.stop()
 	
-	if Input.is_action_just_released("Jump") and velocity.y < 0:
-		velocity.y = JUMP_VELOCITY/40
 	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor() or can_coyote_jump:
 			velocity.y = JUMP_VELOCITY
@@ -38,7 +44,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			jump_pressed = true
 			jump_buffer_timer.start(jump_buffer_t)
-	
+	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY/4
 
 	
 	var direction := Input.get_axis("Move_Left", "Move_Right")
@@ -49,8 +56,33 @@ func _physics_process(delta: float) -> void:
 	
 	if direction < 0 :
 		corporate_guy_sprite.flip_h = true
+		projectileSpawnArea.position.x = -7.0
 	if direction > 0 :
 		corporate_guy_sprite.flip_h = false
-	
-	was_on_floor = is_on_floor()
+		projectileSpawnArea.position.x = 7.0
+
 	move_and_slide()
+	
+		##anyspin section
+	if(Input.is_action_just_pressed("Interact")):
+		if(!isSpinning && currentProjectile == null):
+			var newProjectile := projectile.instantiate() as SpinnerProjectile
+			add_child(newProjectile)
+			currentProjectile = newProjectile
+			newProjectile.position = projectileSpawnArea.transform.get_origin()
+			newProjectile.spinnerHit.connect(_on_spinner_hit)
+			if(corporate_guy_sprite.flip_h == true): newProjectile.speed *= -1
+			return
+		elif(currentSpinner != null):
+			currentSpinner.canSpin = false
+			currentSpinner = null
+			isSpinning = false
+
+
+#region signal catcher
+func _on_spinner_hit(newSpinner: SpinnerObject) -> void:
+	currentSpinner = newSpinner
+	newSpinner.canSpin = true
+	isSpinning = true
+	pass
+#endregion
