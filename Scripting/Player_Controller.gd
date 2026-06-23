@@ -66,6 +66,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	#for i in get_slide_collision_count():
+		#var collision = get_slide_collision(i)
+		#var collider = collision.get_collider()
+#
+		#if collider is RigidBody2D:
+			#var force = velocity.normalized() * 500.0
+			#var offset = collision.get_position() - collider.global_position
+#
+			#collider.apply_force(force, offset)
+	
 		##anyspin section
 	if(Input.is_action_just_pressed("Interact")):
 		if(!isSpinning && currentProjectile == null):
