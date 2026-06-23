@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	print_debug(body.name)
+	print_debug(body)
 	if(body.is_in_group('Spin_Objects')):
 		if (body is SpinnerObject):
 			spinnerHit.emit(body as SpinnerObject)

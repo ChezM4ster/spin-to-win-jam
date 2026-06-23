@@ -17,7 +17,7 @@ var can_coyote_jump = false
 @export var projectile: PackedScene
 @export var currentProjectile: SpinnerProjectile
 @export var laserPointer: Line2D
-
+var laserChecker: RayCast2D
 
 func _ready() -> void:
 	jump_buffer_timer = Timer.new()
@@ -26,6 +26,7 @@ func _ready() -> void:
 	add_child(jump_buffer_timer)
 	laserPointer = $Line2D
 	laserPointer.clear_points()
+	laserChecker = $RayCast2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -93,6 +94,18 @@ func _physics_process(delta: float) -> void:
 		laserPointer.add_point(projectileSpawnArea.position)
 		#while (laserPointer.get_point_position(laserPointer.get_point_count()-1).distance_to(currentSpinner.spinCoreSprite.global_position) > 16):
 		laserPointer.add_point(currentSpinner.spinCoreSprite.global_position - global_position)
+	
+	if(laserPointer.get_point_count() == 2):
+		laserChecker.enabled = true
+		laserChecker.target_position = laserPointer.get_point_position(1)
+		if (laserChecker.is_colliding() && 
+		(laserChecker.get_collider() != currentSpinner &&
+		laserChecker.get_collider() != currentSpinner.staticSpinner && 
+		laserChecker.get_collider() != currentSpinner.spinnerRigidBody &&
+		!laserChecker.get_collider().is_in_group('Player'))
+		):
+			print_debug(laserChecker.get_collider(), currentSpinner)
+			cancelSpinning()
 
 
 func cancelSpinning():
@@ -100,6 +113,7 @@ func cancelSpinning():
 	currentSpinner = null
 	isSpinning = false
 	laserPointer.clear_points()
+	laserChecker.enabled = false
 
 #line.add_point(some_global_pos - line.global_position)
 #region signal catcher

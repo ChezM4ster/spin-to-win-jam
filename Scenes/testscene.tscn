@@ -11,11 +11,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(392, 16)
 
-[node name="Node2D" type="Node2D" unique_id=1380629943]
+[node name="TestLevel" type="Node2D" unique_id=1380629943]
 
 [node name="Player" parent="." unique_id=2112382433 instance=ExtResource("2_ye8wr")]
 position = Vector2(111, 242)
 collision_mask = 7
+coyote_t = null
+jump_buffer_t = null
+isSpinning = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1025395165]
 position = Vector2(194, 207)
@@ -34,8 +37,10 @@ collision_layer = 2
 collision_mask = 2
 canSpin = false
 
-[node name="StaticBody2D2" parent="PinJoint2D" unique_id=1696513393 instance=ExtResource("3_ckmbu")]
+[node name="StaticBody2D2" parent="PinJoint2D" unique_id=1696513393 groups=["Spin_Objects", "Terrain"] instance=ExtResource("3_ckmbu")]
 rotation = -1.5707964
+collision_layer = 6
+collision_mask = 15
 
 [node name="Terrain" type="Node2D" parent="." unique_id=1762658383 node_paths=PackedStringArray("staticSpinner", "spinCoreSprite") groups=["Spin_Objects", "Terrain"]]
 position = Vector2(195, 207)
