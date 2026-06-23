@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b8wj06yobd5eh"]
+
+[ext_resource type="Script" uid="uid://b3j2cbd1jyomi" path="res://Scripting/pause_menu.gd" id="1_myx47"]
+[ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="2_kukqi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+shader = ExtResource("2_kukqi")
+shader_parameter/lod = 1.0000000475
+
+[node name="Pause_Menu" type="CanvasLayer" unique_id=759516514]
+process_mode = 3
+script = ExtResource("1_myx47")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=868332743]
+material = SubResource("ShaderMaterial_57qmd")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.85490197)
+
+[node name="Button" type="Button" parent="." unique_id=1554484931]
+offset_left = 462.0
+offset_top = 273.0
+offset_right = 719.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 42
+text = "RESUME"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

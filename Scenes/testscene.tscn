@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dibsw71pkro4d"]
 
 [ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="1_l2n4a"]
-[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://Scenes/lilguy.tscn" id="2_ye8wr"]
-[ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://Scenes/screw.tscn" id="3_ckmbu"]
-[ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://Scenes/free_spinner_object.tscn" id="4_3hk28"]
-[ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
-[ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://Scenes/spinningthing.tscn" id="4_p7smk"]
-[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://Scenes/SpinCoreSprite.tscn" id="6_3hk28"]
+[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="2_ye8wr"]
+[ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://scenes/screw.tscn" id="3_ckmbu"]
+[ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://scenes/free_spinner_object.tscn" id="4_3hk28"]
+[ext_resource type="Script" uid="uid://djaemehjidb53" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
+[ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="4_p7smk"]
+[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://scenes/SpinCoreSprite.tscn" id="6_3hk28"]
+[ext_resource type="PackedScene" uid="uid://b8wj06yobd5eh" path="res://scenes/pause_menu.tscn" id="8_acxp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(392, 16)
@@ -64,12 +65,12 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="Terrain/StaticBody2D2" unique_id=2059853152]
-position = Vector2(200.24997, 279.81247)
+position = Vector2(200, 251)
 scale = Vector2(12.234375, 2.1484404)
 texture = ExtResource("1_l2n4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D2" unique_id=2072952478 groups=["Terrain"]]
-position = Vector2(200, 279)
+position = Vector2(198, 250)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Terrain" unique_id=328362449 groups=["Spin_Objects", "Terrain"]]
@@ -108,3 +109,5 @@ position = Vector2(0, 81)
 [node name="Free Spinner Object" parent="." unique_id=1604758708 instance=ExtResource("4_3hk28")]
 position = Vector2(146, 227.00002)
 rotation = 1.5707964
+
+[node name="Pause_Menu" parent="." unique_id=759516514 instance=ExtResource("8_acxp7")]
