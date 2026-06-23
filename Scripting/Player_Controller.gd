@@ -34,11 +34,11 @@ func _physics_process(delta: float) -> void:
 		if was_on_floor and velocity.y >= 0 :
 			can_coyote_jump = true
 			get_tree().create_timer(coyote_t).timeout.connect(func(): can_coyote_jump = false)
-		else:
-			if jump_pressed:
-				velocity.y = JUMP_VELOCITY
-				jump_pressed=false
-				jump_buffer_timer.stop()
+	else:
+		if jump_pressed:
+			velocity.y = JUMP_VELOCITY
+			jump_pressed=false
+			jump_buffer_timer.stop()
 	
 	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor() or can_coyote_jump:
