@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://te3meu81bjha"]
 
-[ext_resource type="Texture2D" uid="uid://yvraxd70tfwh" path="res://Art Assets/Square.png" id="1_r8opy"]
 [ext_resource type="Script" uid="uid://cjrpa2wsk7x0a" path="res://Scripting/spinner_detecting_projectile.gd" id="1_tlnil"]
+[ext_resource type="Texture2D" uid="uid://b08q333dbsibg" path="res://Art Assets/laserbeam.png" id="2_53ajk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
-size = Vector2(7, 4)
+size = Vector2(7.5, 4)
 
 [node name="SpinnerDetectingProjectile" type="RigidBody2D" unique_id=1858866509]
 collision_layer = 8
@@ -19,12 +19,13 @@ max_contacts_reported = 1
 script = ExtResource("1_tlnil")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1475371140]
+position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_u0ya7")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=212875787]
-position = Vector2(-9.536743e-07, 0)
-scale = Vector2(0.031133391, 0.016195374)
-texture = ExtResource("1_r8opy")
+position = Vector2(-0.1250006, -1.1920929e-07)
+scale = Vector2(0.51562494, 0.6666667)
+texture = ExtResource("2_53ajk")
 
 [node name="Timer" type="Timer" parent="." unique_id=1657811879]
 wait_time = 3.0
