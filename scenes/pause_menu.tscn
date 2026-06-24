@@ -2,10 +2,34 @@
 
 [ext_resource type="Script" uid="uid://b3j2cbd1jyomi" path="res://Scripting/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="2_kukqi"]
+[ext_resource type="Texture2D" uid="uid://bruny1i37g5nw" path="res://Art Assets/veryseriousboss.png" id="3_kukqi"]
+[ext_resource type="Texture2D" uid="uid://bc668t1vv2n2j" path="res://Art Assets/Shareholders.png" id="4_5d2l8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
 shader = ExtResource("2_kukqi")
 shader_parameter/lod = 1.0000000475
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l7mv"]
+atlas = ExtResource("4_5d2l8")
+region = Rect2(0, 360, 1080, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4r4p"]
+atlas = ExtResource("4_5d2l8")
+region = Rect2(1080, 360, 1080, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l7mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4r4p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Pause_Menu" type="CanvasLayer" unique_id=759516514]
 process_mode = 3
@@ -24,5 +48,16 @@ offset_right = 719.0
 offset_bottom = 362.0
 theme_override_font_sizes/font_size = 42
 text = "RESUME"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020402950]
+position = Vector2(264, 314)
+scale = Vector2(22.36719, 22.36719)
+texture = ExtResource("3_kukqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2064909055]
+position = Vector2(572, 486)
+scale = Vector2(1.0722222, 1)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

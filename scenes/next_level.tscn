@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cl6gg77ats27e"]
+
+[ext_resource type="Script" uid="uid://bbpqjh5vro4ga" path="res://Scripting/next_level.gd" id="1_e8fy2"]
+[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="2_wlp6t"]
+[ext_resource type="PackedScene" uid="uid://cq1g6baggjlqo" path="res://scenes/level_completed.tscn" id="3_il65w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(18, 26)
+
+[node name="Next_Level" type="Area2D" unique_id=1248881824]
+script = ExtResource("1_e8fy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1908951176]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=131292493]
+position = Vector2(4.7683716e-07, -13.000001)
+rotation = 1.5707964
+scale = Vector2(0.8226413, 2.283739)
+texture = ExtResource("2_wlp6t")
+
+[node name="Timer" type="Timer" parent="." unique_id=1852068837]
+wait_time = 1.5999999999999999
+one_shot = true
+
+[node name="Level completed" parent="." unique_id=1119528439 instance=ExtResource("3_il65w")]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

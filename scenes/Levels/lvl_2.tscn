@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dojax4n0pcaii"]
+
+[ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://scenes/free_spinner_object.tscn" id="2_wkehg"]
+[ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="3_7bl05"]
+[ext_resource type="PackedScene" uid="uid://cl6gg77ats27e" path="res://scenes/next_level.tscn" id="4_fwp2o"]
+
+[node name="lvl_2" type="Node2D" unique_id=576011338]
+
+[node name="Free Spinner Object" parent="." unique_id=1604758708 instance=ExtResource("2_wkehg")]
+position = Vector2(336, 126)
+
+[node name="Corporate_guy" parent="." unique_id=2112382433 instance=ExtResource("3_7bl05")]
+position = Vector2(178, 132)
+
+[node name="Next_Level" parent="." unique_id=1248881824 instance=ExtResource("4_fwp2o")]
+position = Vector2(546, 140)

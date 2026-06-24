@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cq1g6baggjlqo"]
+
+[ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="1_dn7nr"]
+[ext_resource type="Texture2D" uid="uid://bruny1i37g5nw" path="res://Art Assets/veryseriousboss.png" id="2_edfq6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+shader = ExtResource("1_dn7nr")
+shader_parameter/lod = 1.0000000475
+
+[node name="Level completed" type="CanvasLayer" unique_id=1119528439]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1179884328]
+material = SubResource("ShaderMaterial_yf5fn")
+offset_right = 1158.0
+offset_bottom = 655.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=180269515]
+position = Vector2(896.99994, 387.99994)
+scale = Vector2(24.125, 24.125)
+texture = ExtResource("2_edfq6")
+flip_h = true
+
+[node name="Label" type="Label" parent="." unique_id=779750853]
+offset_left = 248.0
+offset_top = 309.0
+offset_right = 671.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 40
+text = "¡ LEVEL COMPLETED!"
