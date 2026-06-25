@@ -23,16 +23,16 @@ spinCoreSprite = NodePath("SpinCoreSprite")
 scale = Vector2(3, 3)
 texture = ExtResource("2_cfg7r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=313792587]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=313792587 groups=["Spin_Objects"]]
 shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="SpinCoreSprite" parent="." unique_id=2009524348 instance=ExtResource("3_6k1hc")]
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1399694166]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1399694166 groups=["Spin_Objects"]]
 target_position = Vector2(1400, 0)
 collision_mask = 5
 
-[node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=2046370918]
+[node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=2046370918 groups=["Spin_Objects"]]
 points = PackedVector2Array(0, 0, 249, 0)
 texture = ExtResource("5_b2fmh")
 texture_mode = 2

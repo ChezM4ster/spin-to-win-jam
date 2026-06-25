@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 @export var canSpin: bool = false
 @export var spinCoreSprite: AnimatedSprite2D
 
+
 func _ready() -> void:
 	if(spinCoreSprite == null):
 		print_debug("You're missing a spin core sprite")
