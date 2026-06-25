@@ -1,21 +1,15 @@
-#extends RigidBody2D
-#@export var rotation_speed = 300
-#@export var rigid_body_2d: RigidBody2D
-
-#func _physics_process(delta: float) -> void:
-	#var radius = spinnerRigidBody.global_position - originBody.global_position
-	# Perpendicular vector (90° rotation)
-	#var tangent = Vector2(-radius.y, radius.x).normalized()
-	#spinnerRigidBody.apply_central_force(tangent * Input.get_axis("Spin_CounterCW","Spin_CW") * rotationSpeed * delta)
-	
-	
-#	rigid_body_2d.angular_velocity = (Input.get_axis("Spin_CounterCW","Spin_CW") * rotation_speed * delta)
-	#rotate()
-#	rigid_body_2d.move_and_collide(rigid_body_2d.linear_velocity * delta)
-#	return
-
 extends Node2D
+@export var rotation_speed = 300
+@export var rot_gear: RigidBody2D
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var line_2d: Line2D = $RayCast2D/Line2D
 
+func _process(delta: float) -> void:
+	line_2d.clear_points()
+	if ray_cast_2d.is_colliding():
+		line_2d.add_point(line_2d.to_local(rot_gear.global_position))
+		line_2d.add_point(line_2d.to_local(ray_cast_2d.get_collision_point()))
+	
 @export var rotationSpeed: float = 300
 @export var spinnerRigidBody: RigidBody2D
 #@export var originBody: StaticBody2D
