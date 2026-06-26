@@ -22,12 +22,12 @@ position = Vector2(143, 120)
 collision_mask = 7
 floor_max_angle = 1.0471976
 
-[node name="Next_Level" parent="." unique_id=1248881824 instance=ExtResource("4_fwp2o")]
-position = Vector2(496, 160)
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1600724517]
 position = Vector2(311, 52)
 zoom = Vector2(2.3, 2.3)
+
+[node name="Next_Level" parent="." unique_id=1248881824 instance=ExtResource("4_fwp2o")]
+position = Vector2(496, 160)
 
 [node name="Kill_zone" parent="." unique_id=482133250 instance=ExtResource("5_wkehg")]
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="2_ye8wr"]
 [ext_resource type="PackedScene" uid="uid://cqovrl8a7jrlt" path="res://scenes/screw.tscn" id="3_ckmbu"]
 [ext_resource type="PackedScene" uid="uid://clmb167ff4qxe" path="res://scenes/free_spinner_object.tscn" id="4_3hk28"]
-[ext_resource type="Script" uid="uid://djaemehjidb53" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
+[ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="4_ggkdx"]
 [ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="4_p7smk"]
 [ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://scenes/SpinCoreSprite.tscn" id="6_3hk28"]
 [ext_resource type="PackedScene" uid="uid://b8wj06yobd5eh" path="res://scenes/pause_menu.tscn" id="8_acxp7"]
@@ -36,7 +36,6 @@ bias = 0.9
 position = Vector2(38, 0)
 collision_layer = 2
 collision_mask = 2
-canSpin = false
 
 [node name="StaticBody2D2" parent="PinJoint2D" unique_id=1696513393 groups=["Spin_Objects", "Terrain"] instance=ExtResource("3_ckmbu")]
 rotation = -1.5707964
