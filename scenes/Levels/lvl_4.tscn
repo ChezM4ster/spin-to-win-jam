@@ -17,8 +17,8 @@ collision_mask = 7
 position = Vector2(215, -82)
 zoom = Vector2(2.3, 2.3)
 
-[node name="Button" parent="." unique_id=182340585 instance=ExtResource("3_mm57y")]
-position = Vector2(288, 14)
-
 [node name="rot_gear" parent="." unique_id=647671646 instance=ExtResource("4_ti0da")]
-position = Vector2(288, -74)
+position = Vector2(266, -77)
+
+[node name="Button" parent="." unique_id=182340585 instance=ExtResource("3_mm57y")]
+position = Vector2(317, 14)

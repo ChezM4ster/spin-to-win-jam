@@ -2,15 +2,13 @@ extends Node2D
 @onready var button_off: Sprite2D = $Sprite2D
 @onready var button_on: Sprite2D = $Sprite2D2
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
-func _process(delta: float) -> void:
-	pass
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	button_off.hide()
+	button_off.show()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Laser"):
-		button_off.hide()
-		button_on.show()
+
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	button_off.hide()
+	button_off.show()
