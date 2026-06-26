@@ -12,7 +12,10 @@ func _process(delta: float) -> void:
 	if ray_cast_2d.is_colliding():
 		line_2d.add_point(line_2d.to_local(rot_gear.global_position))
 		line_2d.add_point(line_2d.to_local(ray_cast_2d.get_collision_point()))
-		
+		var collider = ray_cast_2d.get_collider()
+		if collider.is_in_group("Button"):
+			if collider.has_method("activated"):
+				collider.activated()
 	
-func _physics_process(delta: float) -> void:
-	area_2d.global_position = ray_cast_2d.get_collision_point()
+#func _physics_process(delta: float) -> void:
+#	area_2d.global_position = ray_cast_2d.get_collision_point()

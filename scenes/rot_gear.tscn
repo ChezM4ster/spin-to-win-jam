@@ -33,7 +33,8 @@ shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1399694166]
 target_position = Vector2(1400, 0)
-collision_mask = 15
+collision_mask = 31
+collide_with_areas = true
 script = ExtResource("4_b2fmh")
 
 [node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=2046370918]
