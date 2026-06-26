@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://dqlj2enovy2qg"]
 
-[ext_resource type="Script" uid="uid://xehu68byuy38" path="res://Scripting/rot_gear.gd" id="1_8agla"]
+[ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="1_6k1hc"]
 [ext_resource type="Texture2D" uid="uid://cahqmnvghamud" path="res://Art Assets/protoscrew.png" id="2_cfg7r"]
 [ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://scenes/SpinCoreSprite.tscn" id="3_6k1hc"]
+[ext_resource type="Script" uid="uid://bt8t8qahco2s5" path="res://Scripting/laserdraw.gd" id="4_b2fmh"]
 [ext_resource type="Texture2D" uid="uid://b08q333dbsibg" path="res://Art Assets/laserbeam.png" id="5_b2fmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 9.0
 
-[node name="rot_gear" type="RigidBody2D" unique_id=647671646 node_paths=PackedStringArray("rot_gear", "spinnerRigidBody", "spinCoreSprite") groups=["Spin_Objects"]]
+[node name="rot_gear" type="RigidBody2D" unique_id=647671646 node_paths=PackedStringArray("spinnerRigidBody", "spinCoreSprite") groups=["Spin_Objects"]]
 collision_layer = 4
 collision_mask = 15
 gravity_scale = 0.0
 continuous_cd = 2
 contact_monitor = true
-script = ExtResource("1_8agla")
-rot_gear = NodePath(".")
+script = ExtResource("1_6k1hc")
 spinnerRigidBody = NodePath(".")
-spinCoreSprite = NodePath("SpinCoreSprite")
+spinCoreSprite = NodePath("spinCoreSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1057781722]
 scale = Vector2(3, 3)
@@ -26,13 +26,14 @@ texture = ExtResource("2_cfg7r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=313792587 groups=["Spin_Objects"]]
 shape = SubResource("CircleShape2D_g4v7s")
 
-[node name="SpinCoreSprite" parent="." unique_id=2009524348 instance=ExtResource("3_6k1hc")]
+[node name="spinCoreSprite" parent="." unique_id=2009524348 instance=ExtResource("3_6k1hc")]
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1399694166 groups=["Spin_Objects"]]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1399694166]
 target_position = Vector2(1400, 0)
 collision_mask = 5
+script = ExtResource("4_b2fmh")
 
-[node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=2046370918 groups=["Spin_Objects"]]
+[node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=2046370918]
 points = PackedVector2Array(0, 0, 249, 0)
 texture = ExtResource("5_b2fmh")
 texture_mode = 2

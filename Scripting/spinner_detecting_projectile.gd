@@ -17,6 +17,8 @@ func _on_body_entered(body: Node) -> void:
 			spinnerHit.emit(body as SpinnerObject)
 		elif (body.get_parent() is SpinnerObject):
 			spinnerHit.emit(body.get_parent() as SpinnerObject)
+		elif (body.is_in_group('Spin_Objects')):
+			spinnerHit.emit(body as SpinnerObject)
 	queue_free()
 	pass # Replace with function body.
 

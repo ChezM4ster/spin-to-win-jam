@@ -1,14 +1,15 @@
 extends Node2D
+@export var SpinnerObject: SpinnerObject
 @export var rotation_speed = 300
 @export var rot_gear: RigidBody2D
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
-@onready var line_2d: Line2D = $RayCast2D/Line2D
+#@onready var ray_cast_2d: RayCast2D = $RayCast2D
+#@onready var line_2d: Line2D = $RayCast2D/Line2D
 
-func _process(delta: float) -> void:
-	line_2d.clear_points()
-	if ray_cast_2d.is_colliding():
-		line_2d.add_point(line_2d.to_local(rot_gear.global_position))
-		line_2d.add_point(line_2d.to_local(ray_cast_2d.get_collision_point()))
+#func _process(delta: float) -> void:
+#	line_2d.clear_points()
+#	if ray_cast_2d.is_colliding():
+#		line_2d.add_point(line_2d.to_local(rot_gear.global_position))
+#		line_2d.add_point(line_2d.to_local(ray_cast_2d.get_collision_point()))
 	
 @export var rotationSpeed: float = 300
 @export var spinnerRigidBody: RigidBody2D
@@ -42,6 +43,7 @@ func setSpin (canISpinNowPLease: bool):
 	else: spinCoreSprite.stop()
 	canSpin = canISpinNowPLease
 	pass
+
 
 
 func _on_rigid_body_2d_body_entered(_body: Node) -> void:

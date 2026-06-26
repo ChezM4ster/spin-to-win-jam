@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://clmb167ff4qxe"]
 
 [ext_resource type="Script" uid="uid://ce2bb7phcp8p7" path="res://Scripting/spinner_object.gd" id="1_ld5pt"]
-[ext_resource type="Texture2D" uid="uid://yvraxd70tfwh" path="res://Art Assets/Square.png" id="2_vktrk"]
-[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://Scenes/SpinCoreSprite.tscn" id="3_vktrk"]
+[ext_resource type="Texture2D" uid="uid://u2nndqny67gf" path="res://Art Assets/protbox.png" id="2_imscj"]
+[ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://scenes/SpinCoreSprite.tscn" id="3_vktrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 size = Vector2(36, 20)
@@ -23,8 +23,8 @@ shape = SubResource("RectangleShape2D_u0ya7")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D" unique_id=2117537919 groups=["Spin_Objects"]]
 modulate = Color(0, 1, 1, 1)
-scale = Vector2(0.1458295, 0.07999879)
-texture = ExtResource("2_vktrk")
+scale = Vector2(1.1875, 2.5)
+texture = ExtResource("2_imscj")
 
 [node name="SpinCoreSprite" parent="RigidBody2D" unique_id=2009524348 instance=ExtResource("3_vktrk")]
 

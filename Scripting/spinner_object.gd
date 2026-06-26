@@ -1,5 +1,5 @@
 extends Node2D
-class_name  SpinnerObject
+class_name SpinnerObject
 @export var rotationSpeed: float = 300
 @export var spinnerRigidBody: RigidBody2D
 #@export var originBody: StaticBody2D
@@ -7,6 +7,7 @@ class_name  SpinnerObject
 @export var staticSpinner: Node2D
 @export var canSpin: bool = false
 @export var spinCoreSprite: AnimatedSprite2D
+
 
 func _ready() -> void:
 	if(spinCoreSprite == null):

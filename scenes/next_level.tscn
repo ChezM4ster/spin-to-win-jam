@@ -8,6 +8,7 @@
 size = Vector2(18, 26)
 
 [node name="Next_Level" type="Area2D" unique_id=1248881824]
+process_mode = 3
 script = ExtResource("1_e8fy2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1908951176]
@@ -21,7 +22,7 @@ scale = Vector2(0.8226413, 2.283739)
 texture = ExtResource("2_wlp6t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1852068837]
-wait_time = 1.5999999999999999
+wait_time = 1.6
 one_shot = true
 
 [node name="Level completed" parent="." unique_id=1119528439 instance=ExtResource("3_il65w")]
