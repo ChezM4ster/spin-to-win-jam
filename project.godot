@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SpinToWinJam"
-run/main_scene="uid://c6s1un3muitia"
+run/main_scene="uid://csd8n3b0q01ul"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -34,6 +34,7 @@ folder_colors={
 Terrain=""
 Player=""
 Spin_Objects=""
+Laser=""
 
 [input]
 

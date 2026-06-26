@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://botss2m176ij5" path="res://Scripting/Player_Controller.gd" id="1_dgipi"]
 [ext_resource type="Texture2D" uid="uid://ri5n82lthj6h" path="res://Art Assets/lilcorporateguy.png" id="2_45lhf"]
-[ext_resource type="PackedScene" uid="uid://te3meu81bjha" path="res://Scenes/spinner_detecting_projectile.tscn" id="2_ghwb3"]
+[ext_resource type="PackedScene" uid="uid://te3meu81bjha" path="res://scenes/spinner_detecting_projectile.tscn" id="2_ghwb3"]
+[ext_resource type="Texture2D" uid="uid://bwr6uyxneamrw" path="res://Art Assets/AnySpin.png" id="4_80jjx"]
 [ext_resource type="Texture2D" uid="uid://b08q333dbsibg" path="res://Art Assets/laserbeam.png" id="4_bkbyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t74ru"]
@@ -52,6 +53,70 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjfuv"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54hip"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umb5b"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1qn7"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfylo"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or7aj"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ur3m"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pvds"]
+atlas = ExtResource("4_80jjx")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjfuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54hip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umb5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1qn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfylo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or7aj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ur3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pvds")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Corporate_guy" type="CharacterBody2D" unique_id=2112382433 node_paths=PackedStringArray("projectileSpawnArea") groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_dgipi")
@@ -59,6 +124,7 @@ projectileSpawnArea = NodePath("Spinner projectile spawn area")
 projectile = ExtResource("2_ghwb3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=472324938 groups=["Player"]]
+z_index = 4
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
@@ -67,6 +133,12 @@ frame_progress = 0.6551162
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=972489467 groups=["Player"]]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_yf5fn")
+
+[node name="Anyspin" type="AnimatedSprite2D" parent="." unique_id=2081263870]
+z_index = 3
+position = Vector2(8, -6)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+autoplay = "default"
 
 [node name="Spinner projectile spawn area" type="Node2D" parent="." unique_id=508028261 groups=["Player"]]
 position = Vector2(7, -6)

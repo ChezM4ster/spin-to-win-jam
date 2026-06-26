@@ -9,6 +9,7 @@ var jump_buffer_timer = Timer
 var was_on_floor = false
 var can_coyote_jump = false
 @onready var corporate_guy_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anyspin: AnimatedSprite2D = $Anyspin
 
 #Shooting variables
 @export var currentSpinner: SpinnerObject
@@ -60,9 +61,13 @@ func _physics_process(delta: float) -> void:
 	
 	if direction < 0 :
 		corporate_guy_sprite.flip_h = true
+		anyspin.flip_h = true
+		anyspin.position.x = -7.0
 		projectileSpawnArea.position.x = -7.0
 	if direction > 0 :
 		corporate_guy_sprite.flip_h = false
+		anyspin.flip_h = false
+		anyspin.position.x = 7.0
 		projectileSpawnArea.position.x = 7.0
 
 	move_and_slide()
