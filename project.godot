@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="SpinToWinJam"
-run/main_scene="uid://csd8n3b0q01ul"
+run/main_scene="uid://c6s1un3muitia"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://6mwiou8ncd8l"
+
+[autoload]
+
+LilCorporateBeat="*uid://ct3hirk1a4y4k"
+GameManager="*uid://wg5udo506iqm"
 
 [display]
 

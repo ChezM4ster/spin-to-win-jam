@@ -42,12 +42,20 @@ offset_bottom = 648.0
 color = Color(0.003921569, 0.003921569, 0.003921569, 0.85490197)
 
 [node name="Button" type="Button" parent="." unique_id=1554484931]
-offset_left = 462.0
-offset_top = 273.0
-offset_right = 719.0
-offset_bottom = 362.0
+offset_left = 451.0
+offset_top = 113.0
+offset_right = 708.0
+offset_bottom = 202.0
 theme_override_font_sizes/font_size = 42
 text = "RESUME"
+
+[node name="Button2" type="Button" parent="." unique_id=1467004069]
+offset_left = 447.0
+offset_top = 226.0
+offset_right = 704.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 42
+text = "RESTART"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020402950]
 position = Vector2(264, 314)
@@ -61,3 +69,4 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

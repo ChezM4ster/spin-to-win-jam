@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdawbwej1l2ix" path="res://scenes/SpinCoreSprite.tscn" id="3_vxi70"]
 [ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="4_w4xl5"]
 [ext_resource type="PackedScene" uid="uid://cl6gg77ats27e" path="res://scenes/next_level.tscn" id="5_uixos"]
+[ext_resource type="PackedScene" uid="uid://b8wj06yobd5eh" path="res://scenes/pause_menu.tscn" id="6_ac7al"]
 
 [node name="lvl_3" type="Node2D" unique_id=308859962]
 
@@ -31,3 +32,5 @@ collision_mask = 7
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338076550]
 position = Vector2(8, 13)
 zoom = Vector2(2.3, 2.3)
+
+[node name="Pause_Menu" parent="." unique_id=759516514 instance=ExtResource("6_ac7al")]

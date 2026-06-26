@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ct3hirk1a4y4k"]
+
+[ext_resource type="AudioStream" uid="uid://dopoo8p2eitsx" path="res://Art Assets/music/LilCorporateBeat.mp3" id="1_88ljy"]
+
+[node name="LilCorporateBeat" type="AudioStreamPlayer2D" unique_id=188925121]
+process_mode = 3
+stream = ExtResource("1_88ljy")
+autoplay = true
+bus = &"Backmusic"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dopoo8p2eitsx"
+path="res://.godot/imported/LilCorporateBeat.mp3-592127a5529ba0c70b1bdbeb2c58f1b8.mp3str"
+
+[deps]
+
+source_file="res://Art Assets/music/LilCorporateBeat.mp3"
+dest_files=["res://.godot/imported/LilCorporateBeat.mp3-592127a5529ba0c70b1bdbeb2c58f1b8.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cnls71ive2g2j" path="res://scenes/spinningthing.tscn" id="3_thxyo"]
 [ext_resource type="PackedScene" uid="uid://8kkqbpxllgmd" path="res://scenes/lilguy.tscn" id="4_7188g"]
 [ext_resource type="PackedScene" uid="uid://cl6gg77ats27e" path="res://scenes/next_level.tscn" id="5_4vy6c"]
+[ext_resource type="PackedScene" uid="uid://b8wj06yobd5eh" path="res://scenes/pause_menu.tscn" id="6_thxyo"]
 
 [node name="Lvl_1" type="Node2D" unique_id=1283506567]
 
@@ -36,3 +37,5 @@ bias = 0.9
 
 [node name="Next_Level" parent="." unique_id=1248881824 instance=ExtResource("5_4vy6c")]
 position = Vector2(400, 16)
+
+[node name="Pause_Menu" parent="." unique_id=759516514 instance=ExtResource("6_thxyo")]

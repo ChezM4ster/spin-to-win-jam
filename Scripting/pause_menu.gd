@@ -15,3 +15,8 @@ func _input(event: InputEvent) -> void:
 func _on_button_pressed() -> void:
 	visible = false
 	get_tree().paused = false
+
+
+
+func _on_button_2_pressed() -> void:
+	get_tree().reload_current_scene()
