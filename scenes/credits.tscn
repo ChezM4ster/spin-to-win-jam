@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://tlr7w8d6pbtq"]
+
+[ext_resource type="Script" uid="uid://0e55ye4g7iwh" path="res://Scripting/credits.gd" id="1_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://5ba65lbm7xur" path="res://Art Assets/main menuscreen.png" id="2_8gwij"]
+[ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="3_mah5v"]
+[ext_resource type="FontFile" uid="uid://b2pt7cmj0nrws" path="res://Art Assets/fonts/BoldPixels.ttf" id="4_kyhnv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+shader = ExtResource("3_mah5v")
+shader_parameter/lod = 0.800000038
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1276612275]
+script = ExtResource("1_2fbfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=387668899]
+position = Vector2(577, 386)
+scale = Vector2(1.0722222, 1.0722222)
+texture = ExtResource("2_8gwij")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1604674133]
+offset_left = 307.0
+offset_top = 39.0
+offset_right = 890.0
+offset_bottom = 632.0
+color = Color(0.33389175, 0.29663008, 0.063224085, 0.39215687)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=14441079]
+material = SubResource("ShaderMaterial_yf5fn")
+offset_left = 298.0
+offset_top = 35.0
+offset_right = 904.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=923577355]
+offset_left = 304.0
+offset_top = 21.0
+offset_right = 904.0
+offset_bottom = 632.0
+theme_override_fonts/normal_font = ExtResource("4_kyhnv")
+theme_override_font_sizes/normal_font_size = 34
+text = "
+Developed by WCFF for The Very Serious Juniper Dev Game Jam
+
+Concept by Chez
+
+Code by Chez and Festus
+
+Art by Festus, Foxglove7184, and Wisefae
+
+Music by Foxglove7184
+
+Writing by Wisefae 
+
+Made with Godot
+
+Additional assets: 
+SFX from Pixabay"
+fit_content = true
+scroll_following = true
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Button" type="Button" parent="." unique_id=1198554077]
+offset_left = 35.0
+offset_top = 58.0
+offset_right = 205.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("4_kyhnv")
+theme_override_font_sizes/font_size = 53
+text = "< BACK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="1_dn7nr"]
 [ext_resource type="Texture2D" uid="uid://bruny1i37g5nw" path="res://Art Assets/veryseriousboss.png" id="2_edfq6"]
+[ext_resource type="FontFile" uid="uid://b2pt7cmj0nrws" path="res://Art Assets/fonts/BoldPixels.ttf" id="3_edfq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
 shader = ExtResource("1_dn7nr")
@@ -21,9 +22,10 @@ texture = ExtResource("2_edfq6")
 flip_h = true
 
 [node name="Label" type="Label" parent="." unique_id=779750853]
-offset_left = 248.0
-offset_top = 309.0
-offset_right = 671.0
-offset_bottom = 374.0
-theme_override_font_sizes/font_size = 40
+offset_left = 55.0
+offset_top = 319.0
+offset_right = 757.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("3_edfq6")
+theme_override_font_sizes/font_size = 77
 text = "¡ LEVEL COMPLETED!"

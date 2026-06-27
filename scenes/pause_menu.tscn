@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3j2cbd1jyomi" path="res://Scripting/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="2_kukqi"]
+[ext_resource type="FontFile" uid="uid://b2pt7cmj0nrws" path="res://Art Assets/fonts/BoldPixels.ttf" id="3_7l7mv"]
 [ext_resource type="Texture2D" uid="uid://bruny1i37g5nw" path="res://Art Assets/veryseriousboss.png" id="3_kukqi"]
 [ext_resource type="Texture2D" uid="uid://bc668t1vv2n2j" path="res://Art Assets/Shareholders.png" id="4_5d2l8"]
 
@@ -46,7 +47,8 @@ offset_left = 451.0
 offset_top = 113.0
 offset_right = 708.0
 offset_bottom = 202.0
-theme_override_font_sizes/font_size = 42
+theme_override_fonts/font = ExtResource("3_7l7mv")
+theme_override_font_sizes/font_size = 66
 text = "RESUME"
 
 [node name="Button2" type="Button" parent="." unique_id=1467004069]
@@ -54,8 +56,10 @@ offset_left = 447.0
 offset_top = 226.0
 offset_right = 704.0
 offset_bottom = 315.0
-theme_override_font_sizes/font_size = 42
+theme_override_fonts/font = ExtResource("3_7l7mv")
+theme_override_font_sizes/font_size = 62
 text = "RESTART"
+alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020402950]
 position = Vector2(264, 314)

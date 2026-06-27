@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="SpinToWinJam"
+config/name="SpinCo"
+config/description="You are a product tester at SpinCo.! As a high performing employee, it is your job to show the shareholders the new AnySpin™. It allows you to spin items in the envirmonment. 
+
+Show them why this product is the best, and maybe your boss will let you have that coveted vacation day. "
 run/main_scene="uid://c6s1un3muitia"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cmog5llnwfa3h"]
+
+[ext_resource type="Script" uid="uid://cdfuijdr8ds16" path="res://Scripting/final_screen.gd" id="1_k56e7"]
+[ext_resource type="Texture2D" uid="uid://5ba65lbm7xur" path="res://Art Assets/main menuscreen.png" id="2_6laal"]
+[ext_resource type="Texture2D" uid="uid://cruwga3swh8om" path="res://Art Assets/Mainmenuframe.png" id="3_cdp6w"]
+[ext_resource type="Shader" uid="uid://dwkmab4l0nvor" path="res://Shaders/dunno.gdshader" id="4_4d61i"]
+[ext_resource type="FontFile" uid="uid://b2pt7cmj0nrws" path="res://Art Assets/fonts/BoldPixels.ttf" id="5_w5nt6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mo1ur"]
+shader = ExtResource("4_4d61i")
+shader_parameter/lod = 0.800000038
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2034286896]
+script = ExtResource("1_k56e7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2088419760]
+position = Vector2(573.5, 384)
+scale = Vector2(1.0638889, 1.0638889)
+texture = ExtResource("2_6laal")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1169181296]
+position = Vector2(588, 1057)
+scale = Vector2(1.5236111, 1.5236111)
+texture = ExtResource("3_cdp6w")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=481009139]
+offset_left = 79.0
+offset_top = 139.0
+offset_right = 1039.0
+offset_bottom = 407.0
+color = Color(0.33389175, 0.29663008, 0.063224085, 0.39215687)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1649340319]
+material = SubResource("ShaderMaterial_mo1ur")
+offset_left = 70.0
+offset_top = 135.0
+offset_right = 1058.0
+offset_bottom = 412.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1513824656]
+offset_left = 92.0
+offset_top = 157.0
+offset_right = 1093.0
+offset_bottom = 409.0
+theme_override_fonts/normal_font = ExtResource("5_w5nt6")
+theme_override_font_sizes/normal_font_size = 24
+text = "Thank you for your participation, Associate 732.
+
+Your contribution to the Anyspin Shareholder Demonstration Program has been recorded. Performance metrics, compliance observations, and overall testing quality will be reviewed during your next bi-quarterly evaluation.
+
+Spin Co. appreciates your continued commitment to advancing the future of the Anyspin initiative. Your efforts help ensure our shareholders receive only the highest standard of innovation.
+
+Please await further assignment.
+"
+
+[node name="Button" type="Button" parent="." unique_id=55291591]
+offset_left = 512.0
+offset_top = 428.0
+offset_right = 644.0
+offset_bottom = 485.0
+theme_override_fonts/font = ExtResource("5_w5nt6")
+theme_override_font_sizes/font_size = 55
+text = "QUIT"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

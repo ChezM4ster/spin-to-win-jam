@@ -63,7 +63,7 @@ collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1437373799]
 position = Vector2(11, 2)
-zoom = Vector2(2.3, 2.3)
+zoom = Vector2(2.2, 2.2)
 
 [node name="Free Spinner Object" parent="." unique_id=1604758708 instance=ExtResource("7_8rdx3")]
 position = Vector2(-68, -84)

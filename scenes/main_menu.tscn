@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://pddeiag22435" path="res://Scripting/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://5ba65lbm7xur" path="res://Art Assets/main menuscreen.png" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cruwga3swh8om" path="res://Art Assets/Mainmenuframe.png" id="2_bqqt6"]
+[ext_resource type="FontFile" uid="uid://b2pt7cmj0nrws" path="res://Art Assets/fonts/BoldPixels.ttf" id="4_wu84c"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=118177729]
 script = ExtResource("1_bqqt6")
@@ -18,11 +19,22 @@ scale = Vector2(1.3691041, 1.4989582)
 texture = ExtResource("2_bqqt6")
 
 [node name="Button" type="Button" parent="." unique_id=1886556285]
-offset_left = 480.0
-offset_top = 394.0
-offset_right = 720.0
-offset_bottom = 479.0
-theme_override_font_sizes/font_size = 46
+offset_left = 471.0
+offset_top = 388.0
+offset_right = 688.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 83
 text = "PLAY"
 
+[node name="Button2" type="Button" parent="." unique_id=1636071909]
+offset_left = 412.0
+offset_top = 495.0
+offset_right = 747.0
+offset_bottom = 577.0
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 83
+text = "CREDITS"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
